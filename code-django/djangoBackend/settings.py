@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',  # to add the app created to the django
+    'users',  # all the users having access
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,8 @@ ROOT_URLCONF = 'djangoBackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # to attach the templates folder with django
+        'DIRS': [os.path.join(BASE_DIR, '/app/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

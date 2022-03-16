@@ -13,9 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from xml.etree.ElementInclude import include
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+# from app.views import mainPage, storeFile, deleteFile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', include('app.urls')),
+    # path('main/', mainPage),
+    # path('store/', storeFile),
+    # # <int:file_id> is replaced by the primary key of the data
+    # path('delete/<int:file_id>/', deleteFile),
+
+    # for login users section
+    # for using django own authentication system
+    #     path('users/', include('django.contrib.auth.urls')),
+    #     path('users/', include('users.urls')),
 ]

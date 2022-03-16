@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<h1>data</h1>
+
+    {% for file in output_database %}
+    <ul>
+        <li>{{file.nameOfFile}}</li>
+        <li>{{file.nameOfLectures}}</li>
+    </ul>
+    {% endfor %}
+
+
+
+{% endblock %}
