@@ -2,14 +2,49 @@
 {% block content %}
 
 <h1>data</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Lecture</th>
+                <th scope="col">Field</th>
+                <th scope="col">Uses</th>
+                <th scope="col">Difficulty Level</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Source</th>
+                <th scope="col">Author</th>
+                <th scope="col">Type</th>
+                <th scope="col">Learning Outcome</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Grading</th>
 
-    {% for file in output_database %}
-    <ul>
-        <li>{{file.nameOfFile}}</li>
-        <li>{{file.nameOfLectures}}</li>
-    </ul>
-    {% endfor %}
+            </tr>
+        </thead>
 
+        {% for file in output_database %}
 
+        <tbody>
+            <tr>
+                <td>{{file.id}}</td>
+                
+                <td><a href="{% url 'database-followup' file.id %}">{{file.nameOfFile}}</a></td>
+                
+                <td>{{file.nameOfLectures}}</td>
+                <td>{{file.fields}}</td>
+                <td>{{file.usedFor}}</td>
+                <td>{{file.difficultyLevel}}</td>
+                <td>{{file.comment}}</td>
+                <td>{{file.sourceOfProblem}}</td>
+                <td>{{file.author}}</td>
+                <td>{{file.typeOfProblem}}</td>
+                <td>{{file.intendedLearningOutcome}}</td>
+                <td>{{file.purposeOfFile}}</td>
+                <td>{{file.grading}}</td>
+            </tr>
+    
+        </tbody>
+        {% endfor %}
+    </table>
 
 {% endblock %}

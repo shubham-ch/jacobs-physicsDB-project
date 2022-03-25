@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import file
+from .forms import fileForm
 
 # Create your views here.
 
@@ -29,3 +30,24 @@ def database(request):
     output_database = file.objects.all()
     return render(request, 'base/database.html',
                   {'output_database': output_database})
+
+
+def database_followup(request, file_id):
+    database_followup = file.objects.get(pk=file_id)
+    return render(request, 'base/database_followup.html', {'database_followup': database_followup})
+
+
+def add_forms(request):
+    submitted = False
+    if request.method == "POST":
+        form = fileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_forms?submitted=True')
+    else:
+        form = fileForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    form = fileForm
+    return render(request, 'base/add_forms.html', {'form': form, 'submitted': submitted})

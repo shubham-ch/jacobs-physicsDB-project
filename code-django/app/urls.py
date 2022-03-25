@@ -10,4 +10,7 @@ urlpatterns = [
     # # <int:file_id> is replaced by the primary key of the data
     # path('delete/<int:file_id>/', deleteFile),
     path('database/', views.database, name="output_database"),
+    path('database_followup/<file_id>',
+         views.database_followup, name='database-followup'),
+    path('add_forms', views.add_forms, name='add-forms')
 ]

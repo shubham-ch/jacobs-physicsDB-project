@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class file(models.Model):
+    id = models.BigAutoField(primary_key=True)
     nameOfFile = models.CharField(max_length=150, blank=True)
     nameOfLectures = models.CharField(max_length=150, blank=True)
     # subject fields

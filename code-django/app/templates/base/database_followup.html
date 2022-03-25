@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <center>
+        
+
+        <div class="card">
+                <div class="card-header">
+                    {{app}}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        <ul>
+                            <h1>File: {{database_followup}}</h1>
+                            {{database_followup.nameOfFile}}<br/>
+                            {{database_followup.nameOfLectures}}<br/>
+                            {{database_followup.fields}}<br />
+                            {{database_followup.usedFor}}<br />
+                            {{database_followup.difficultyLevel}}<br />
+                            {{database_followup.comment}}<br />
+                            {{database_followup.sourceOfProblem}}<br />
+                            {{database_followup.author}}<br />
+                            {{database_followup.typeOfProblem}}<br />
+                            {{database_followup.intendedLearningOutcome}}<br />
+                            {{database_followup.purposeOfFile}}<br />
+                            {{database_followup.grading}}<br />
+                        </ul>
+        
+                    </p>
+                </div>
+            </div>
+        
+    </center>
+
+{% endblock %}
