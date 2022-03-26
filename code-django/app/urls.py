@@ -12,5 +12,6 @@ urlpatterns = [
     path('database/', views.database, name="output_database"),
     path('database_followup/<file_id>',
          views.database_followup, name='database-followup'),
-    path('add_forms', views.add_forms, name='add-forms')
+    path('add_forms', views.add_forms, name='add-forms'),
+    path('search', views.search_database, name='search-database')
 ]

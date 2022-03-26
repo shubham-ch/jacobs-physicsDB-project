@@ -1,3 +1,4 @@
+from fileinput import filename
 from django.shortcuts import render
 
 from django.http import HttpResponse, HttpResponseRedirect
@@ -35,6 +36,16 @@ def database(request):
 def database_followup(request, file_id):
     database_followup = file.objects.get(pk=file_id)
     return render(request, 'base/database_followup.html', {'database_followup': database_followup})
+
+
+def search_database(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        data = file.objects.filter(
+            nameOfFile__contains=searched) | file.objects.filter(nameOfLectures__contains=searched) | file.objects.filter(fields__contains=searched)
+        return render(request, 'base/search.html', {'searched': searched, 'data': data})
+    else:
+        return render(request, 'base/search.html', {})
 
 
 def add_forms(request):
