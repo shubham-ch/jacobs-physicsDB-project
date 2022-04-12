@@ -33,3 +33,8 @@ urlpatterns = [
     #     path('users/', include('django.contrib.auth.urls')),
     #     path('users/', include('users.urls')),
 ]
+
+# configure Admin Titles
+admin.site.site_header = "Physics Database Homework"
+admin.site.site_title = "Physics Database Homework"
+admin.site.index_title = "Welcome To The Admin Area"

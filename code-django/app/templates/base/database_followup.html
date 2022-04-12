@@ -24,11 +24,14 @@
                             {{database_followup.intendedLearningOutcome}}<br />
                             {{database_followup.purposeOfFile}}<br />
                             {{database_followup.grading}}<br />
-                        </ul>
-        
+                            
+                            <a href="{% url 'update_database' database_followup.id %}" class="btn btn-outline-secondary btn-sm">Update</a>
+                            
+                            <a href="{% url 'delete_data' database_followup.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </ul>   
                     </p>
                 </div>
-            </div>
+        </div>
         
     </center>
 

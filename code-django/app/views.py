@@ -1,10 +1,14 @@
 from fileinput import filename
-from django.shortcuts import render
+from unicodedata import name
+from django.shortcuts import render, redirect
 
 from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import file
 from .forms import fileForm
+
+# Import Pagination (Page system for database)
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -27,10 +31,34 @@ def home(request):
 #     temp.delete()
 #     return HttpResponseRedirect('/main/')
 
+def delete_data(request, file_id):
+    database_followup = file.objects.get(pk=file_id)
+    database_followup.delete()
+    return redirect('output_database')
+
+
+def update_database(request, file_id):
+    database_followup = file.objects.get(pk=file_id)
+    form = fileForm(request.POST or None, instance=database_followup)
+    if form.is_valid():
+        form.save()
+        return redirect('output_database')
+    return render(request, 'base/update_database.html', {'database_followup': database_followup,
+                                                         'form': form})
+
+
 def database(request):
-    output_database = file.objects.all()
+    output_database = file.objects.all().order_by('nameOfFile')
+
+    # Set up Pagination
+    p = Paginator(file.objects.all().order_by('nameOfFile'), 2)
+    page = request.GET.get('page')
+    pages = p.get_page(page)
+    nums = "a" * pages.paginator.num_pages
+
     return render(request, 'base/database.html',
-                  {'output_database': output_database})
+                  {'output_database': output_database,
+                   'pages': pages, 'nums': nums})
 
 
 def database_followup(request, file_id):

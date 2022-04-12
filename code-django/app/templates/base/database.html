@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% block content %}
 
-<h1>data</h1>
+    <h1>data</h1>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -21,8 +21,8 @@
 
             </tr>
         </thead>
-
-        {% for file in output_database %}
+<!-- if pages not needed we use 'output_database' instead of 'pages' for the loop -->
+        {% for file in pages %} 
 
         <tbody>
             <tr>
@@ -41,10 +41,43 @@
                 <td>{{file.intendedLearningOutcome}}</td>
                 <td>{{file.purposeOfFile}}</td>
                 <td>{{file.grading}}</td>
+                <td></td>
             </tr>
     
         </tbody>
         {% endfor %}
     </table>
+    <br/><br />
+    <!-- {{pages}} -->
+    <!-- <br />
+    Has Previous: {{ pages.has_previous }} <br/>
+    Has Next: {{ pages.has_next }}<br />
+    Current Page: {{ pages.number }}<br />
+    Number of Pages: {{ pages.paginator.num_pages }}<br /> -->
+    <hr><br/><br />
 
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+
+
+
+    {% if pages.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ pages.previous_page_number }}">Previous</a></li>
+    {% endif %}
+
+    
+
+    {% for i in nums %}
+        <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+    {% endfor %}
+
+    {% if pages.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ pages.next_page_number }}">next</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ pages.paginator.num_pages }}">Last &raquo;</a></li>
+    
+    {% endif %}
+
+        </ul>
+    </nav>
 {% endblock %}
