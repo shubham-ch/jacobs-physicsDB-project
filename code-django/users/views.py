@@ -5,5 +5,8 @@ from django.contrib import messages
 # Create your views here.
 
 
-def loginUser(request):
-    return render(request, 'authenticate/login.html', {})
+def login_user(request):
+    if request.method == "POST":
+        pass
+    else:
+        return render(request, 'authenticate/login.html', {})
