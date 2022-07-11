@@ -7,6 +7,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Lecture</th>
                 <th scope="col">Field</th>
+                <th scope="col">File</th>
                 <th scope="col">Uses</th>
                 <th scope="col">Difficulty Level</th>
                 <th scope="col">Comment</th>
@@ -32,6 +33,7 @@
                             <td><a href="{% url 'database-followup' temp.id %}">{{ temp }}</a></td>
                             <td>{{temp.nameOfLectures}}</td>
                             <td>{{temp.fields}}</td>
+                            <td><a href="/{{file.file_upload}}">{{file.file_upload}}</a></td>
                             <td>{{temp.usedFor}}</td>
                             <td>{{temp.difficultyLevel}}</td>
                             <td>{{temp.comment}}</td>

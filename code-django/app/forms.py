@@ -15,6 +15,7 @@ class fileForm(ModelForm):
             'nameOfFile': '',
             'nameOfLectures': '',
             'fields': '',
+            'file_upload': '',
             'usedFor': '',
             'difficultyLevel': '',
             'comment': '',

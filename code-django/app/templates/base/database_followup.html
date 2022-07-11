@@ -2,7 +2,26 @@
 {% block content %}
     <center>
         
+        <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th><>
+                <th scope="col">Name</th>
+                <th scope="col">Lecture</th>
+                <th scope="col">Field</th>
+                <th scope="col">File</th>
+                <th scope="col">Used For</th>
+                <th scope="col">Difficulty Level</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Source</th>
+                <th scope="col">Author</th>
+                <th scope="col">Type</th>
+                <th scope="col">Learning Outcome</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Grading</th>
 
+            </tr>
+        </thead>
         <div class="card">
                 <div class="card-header">
                     {{app}}
@@ -12,18 +31,19 @@
                     <p class="card-text">
                         <ul>
                             <h1>File: {{database_followup}}</h1>
-                            {{database_followup.nameOfFile}}<br/>
-                            {{database_followup.nameOfLectures}}<br/>
-                            {{database_followup.fields}}<br />
-                            {{database_followup.usedFor}}<br />
-                            {{database_followup.difficultyLevel}}<br />
-                            {{database_followup.comment}}<br />
-                            {{database_followup.sourceOfProblem}}<br />
-                            {{database_followup.author}}<br />
-                            {{database_followup.typeOfProblem}}<br />
-                            {{database_followup.intendedLearningOutcome}}<br />
-                            {{database_followup.purposeOfFile}}<br />
-                            {{database_followup.grading}}<br />
+                            Name: {{database_followup.nameOfFile}}<br/>
+                            Lecture: {{database_followup.nameOfLectures}}<br/>
+                            Field: {{database_followup.fields}}<br />
+                            File: <a href="/{{database_followup.file_upload}}">{{database_followup.file_upload}}</a><br />
+                            Used For: {{database_followup.usedFor}}<br />
+                            Difficulty Level: {{database_followup.difficultyLevel}}<br />
+                            Comment: {{database_followup.comment}}<br />
+                            Source: {{database_followup.sourceOfProblem}}<br />
+                            Author: {{database_followup.author}}<br />
+                            Type: {{database_followup.typeOfProblem}}<br />
+                            Learning Outcome: {{database_followup.intendedLearningOutcome}}<br />
+                            Purpose: {{database_followup.purposeOfFile}}<br />
+                            Grading: {{database_followup.grading}}<br />
                             
                             <a href="{% url 'update_database' database_followup.id %}" class="btn btn-outline-secondary btn-sm">Update</a>
                             

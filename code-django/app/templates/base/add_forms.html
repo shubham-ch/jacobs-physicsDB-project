@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% block content %}
+{% if user.is_authenticated %}
     <h1>Adding to database</h1>
     <br/><br />
     {% if submitted %}
@@ -8,11 +9,20 @@
     {% else %}
     
 
-    <form action="" method=POST>
+    <form action="" method=POST enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ form.as_p }}
         <input type="submit" value="Submit" class="btn btn-success">
     </form>
     {% endif %}
+
+{% else %}
+    <h1>Sorry! You must login to see the contents of this page.</h1>
+
+    <a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+
+
 {% endblock %}

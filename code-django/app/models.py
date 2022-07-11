@@ -10,6 +10,7 @@ class file(models.Model):
     nameOfLectures = models.CharField(max_length=150, blank=True)
     # subject fields
     fields = models.CharField(max_length=150, blank=True)
+    file_upload = models.FileField(null=True, blank=True, upload_to="media/")
     # availability for extercises
     usedFor = models.CharField(max_length=150, blank=True)
     difficultyLevel = models.FloatField(blank=True, null=True)
